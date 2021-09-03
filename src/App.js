@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { ALL_JOBS_QUERY } from './queries/queries'
+import { ALL_JOBS_QUERY } from './graphql/queries'
 import JobsIndex from './components/JobsIndex'
 
 const App = () => {
