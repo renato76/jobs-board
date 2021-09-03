@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
+import styled from 'styled-components'
 
 const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => {
   // console.log('Pagination Props >>>', props)
 
-  // create a for loop to create page numbers
+  // create page numbers using a for loop
   const pageNumbers = []
   for (let i  = 1; i <= Math.ceil(totalJobs / jobsPerPage); i++) {
     pageNumbers.push(i)
@@ -19,18 +20,50 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
   }
 
   return (
-    <div>
-      {pageNumbers.map(number => (
-        <li key={number}>
-          <a 
-            onClick={() => setCurrentPage(number)}
-            href="#">
-            {number}
-          </a>
-        </li>
-      ))}
-    </div>
+    <PaginationStyles>
+      <UnorderedList>
+        {pageNumbers.map(number => (
+          <Listitem key={number}>
+            <PageLinks 
+              onClick={() => setCurrentPage(number)}
+              href="#">
+              {number}
+            </PageLinks>
+          </Listitem>
+        ))}
+      </UnorderedList>
+    </PaginationStyles>
   )
 }
 
 export default Pagination
+
+const UnorderedList = styled.div`
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+`
+
+const Listitem = styled.div`
+  border: 1px solid #a5a5a56c;
+  padding: 8px;
+  cursor: pointer;
+`
+const PaginationStyles = styled.div`
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+`
+
+const PageLinks = styled.a`
+  text-decoration: none;
+  padding: 3px;
+  color: #1887cc;
+  background-color: white;
+  padding: 5px 10px;
+`
+
+
+
