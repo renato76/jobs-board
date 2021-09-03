@@ -6,15 +6,14 @@ const ListJobs = ({ jobs }) => {
     return jobs.map(job => {
       return (
         <JobsCard key={job.id}>
-          <Content>Job Title: {job.title}</Content>
-          <Content>Company: {job.company.name}</Content>
+          <Content>{job.title} at {job.company.name} </Content>
         </JobsCard>
       )
     })
   }
   return (
     <>
-      <h1>Jobs</h1>
+      <Title>Jobs</Title>
       {renderJobsData()}
     </>
   )
@@ -28,8 +27,8 @@ export const JobsCard = styled.div`
   justify-content: center;
   width: 94%;
   flex-wrap: wrap;
-  height: 100px;
-  margin: 20px 10px;
+  height: 40px;
+  margin: 8px 10px;
   border: 2px solid #296396;
   background-color: #296396;
   color: white;
@@ -38,5 +37,9 @@ export const JobsCard = styled.div`
 `
 
 export const Content = styled.p`
-  margin-left: 20px;
+  margin: 0 0 0 20px;
+`
+
+export const Title = styled.h1`
+  text-align: center;
 `
