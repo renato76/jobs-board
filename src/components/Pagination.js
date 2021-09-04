@@ -14,7 +14,7 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
   // const previous = () => setCurrentPage(currentPage - 1)
   // const next = () => setCurrentPage(currentPage + 1)
 
-  // only do the Pagination once we have data
+  // only create the Pagination once we have data
   if (pageNumbers.length === 0) {
     return <></>
   }
@@ -26,7 +26,8 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
           <Listitem key={number}>
             <PageLinks 
               onClick={() => setCurrentPage(number)}
-              href="#">
+              href="#"
+              active={number === currentPage ? 'active' : ''}>
               {number}
             </PageLinks>
           </Listitem>
@@ -38,7 +39,14 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
 
 export default Pagination
 
-const UnorderedList = styled.div`
+const PaginationStyles = styled.div`
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+`
+
+const UnorderedList = styled.ul`
   list-style: none;
   display: flex;
   justify-content: center;
@@ -46,23 +54,15 @@ const UnorderedList = styled.div`
 `
 
 const Listitem = styled.div`
-  border: 1px solid #a5a5a56c;
-  padding: 8px;
   cursor: pointer;
-`
-const PaginationStyles = styled.div`
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
 `
 
 const PageLinks = styled.a`
   text-decoration: none;
-  padding: 3px;
-  color: #1887cc;
-  background-color: white;
-  padding: 5px 10px;
+  color: ${font => font.active? 'white' : '#1887cc'};
+  background: ${link => link.active ? '#1887cc' : 'white'};
+  padding: 3px 10px;
+  border: 1px solid #a5a5a56c;
 `
 
 
