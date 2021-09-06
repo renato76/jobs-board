@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ListJobs from './ListJobs'
 import Pagination from './Pagination'
+import JobNumbers from './JobNumbers'
 
 const JobsIndex = ({ data }) => {
   const jobs = data.jobs
@@ -16,7 +17,10 @@ const JobsIndex = ({ data }) => {
       <ListJobs 
         jobs={currentJobs} 
       />
-      <p>Displaying results {indexOfFirstJob +1} to {indexOfLastJob}</p>
+      <JobNumbers 
+        indexOfFirstJob={indexOfFirstJob}
+        indexOfLastJob={indexOfLastJob}
+      />
       <Pagination 
         jobsPerPage={jobsPerPage}
         totalJobs={jobs.length}
