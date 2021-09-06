@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import styled from 'styled-components'
+import PageNumbers from './PageNumbers'
 
 const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => {
   const pageNumbers = []
@@ -48,16 +49,11 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
     <PaginationStyles>
       <UnorderedList>
         <Previous previous={previous} disabled={currentPage === 1} />
-        {pageNumbers.map(number => (
-          <Listitem key={number}>
-            <PageLinks 
-              onClick={() => setCurrentPage(number)}
-              href="#"
-              active={number === currentPage ? 'active' : ''}>
-              {number}
-            </PageLinks>
-          </Listitem>
-        ))}
+        <PageNumbers 
+          pageNumbers={pageNumbers}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
         <Next next={next} disabled={currentPage === pageNumbers.length} />
       </UnorderedList>
     </PaginationStyles>
@@ -81,11 +77,11 @@ const UnorderedList = styled.ul`
   margin: 30px 0 0 0;
 `
 
-const Listitem = styled.div`
+export const Listitem = styled.div`
   cursor: pointer;
 `
 
-const PageLinks = styled.a`
+export const PageLinks = styled.a`
   text-decoration: none;
   color: ${font => font.active? 'white' : '#1887cc'};
   background: ${link => link.active ? '#1887cc' : 'white'};
