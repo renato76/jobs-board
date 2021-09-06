@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ListJobs = ({ jobs }) => {
+const ListJobs = ({ jobs}) => {
   const renderJobsData = () => {
     return jobs.map(job => {
       return (

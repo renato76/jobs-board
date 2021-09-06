@@ -13,7 +13,9 @@ const JobsIndex = ({ data }) => {
 
   return (
     <>
-      <ListJobs jobs={currentJobs} />
+      <ListJobs 
+        jobs={currentJobs} 
+      />
       <p>Displaying results {indexOfFirstJob +1} to {indexOfLastJob}</p>
       <Pagination 
         jobsPerPage={jobsPerPage}

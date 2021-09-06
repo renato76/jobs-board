@@ -17,6 +17,20 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
     return <></>
   }
 
+  const Previous = ({ previous, disabled }) => {
+    const onClick = (event) => disabled? event.preventDefault() : previous()
+
+    return (
+      <Listitem>
+        <PageLinks
+          onClick={onClick}
+        >Prev 
+        {/* could change the above to a chevron from font awesome */}
+        </PageLinks>
+      </Listitem>
+    )
+  }
+
   const previous = () => setCurrentPage(currentPage - 1)
   const next = () => setCurrentPage(currentPage + 1)
 
@@ -24,12 +38,7 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
   return (
     <PaginationStyles>
       <UnorderedList>
-        <Listitem>
-          <PageLinks
-            onClick={previous}
-          >Prev
-          </PageLinks>
-        </Listitem>
+        <Previous previous={previous} disabled={currentPage === 1} />
         {pageNumbers.map(number => (
           <Listitem key={number}>
             <PageLinks 
