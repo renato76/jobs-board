@@ -37,8 +37,12 @@ export const JobsCard = styled.div`
 
 export const Content = styled.p`
   margin: 0 0 0 20px;
+  font-family: Quicksand;
+  font-size: 15px;
 `
 
 export const Title = styled.h1`
   text-align: center;
+  font-family: Quicksand;
+  font-size: 27px;
 `

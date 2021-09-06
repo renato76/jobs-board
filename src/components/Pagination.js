@@ -3,16 +3,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => {
-  // console.log('Pagination Props >>>', props)
-
-  // create page numbers using a for loop
   const pageNumbers = []
   for (let i  = 1; i <= Math.ceil(totalJobs / jobsPerPage); i++) {
     pageNumbers.push(i)
   }
   console.log(totalJobs)
 
-  // only create the Pagination once we have data
   if (pageNumbers.length === 0) {
     return <></>
   }
@@ -31,9 +27,22 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
     )
   }
 
+  const Next = ({ next, disabled }) => {
+    const onClick = (event) => disabled? event.preventDefault() : next()
+
+    return (
+      <Listitem>
+        <PageLinks
+          onClick={onClick}
+        >Next
+        {/* could change the above to a chevron from font awesome */}
+        </PageLinks>
+      </Listitem>
+    )
+  }
+
   const previous = () => setCurrentPage(currentPage - 1)
   const next = () => setCurrentPage(currentPage + 1)
-
 
   return (
     <PaginationStyles>
@@ -49,12 +58,7 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
             </PageLinks>
           </Listitem>
         ))}
-        <Listitem>
-          <PageLinks
-            onClick={next}
-          >Next
-          </PageLinks>
-        </Listitem>
+        <Next next={next} disabled={currentPage === pageNumbers.length} />
       </UnorderedList>
     </PaginationStyles>
   )
@@ -87,6 +91,8 @@ const PageLinks = styled.a`
   background: ${link => link.active ? '#1887cc' : 'white'};
   padding: 3px 10px;
   border: 1px solid #a5a5a56c;
+  font-family: Quicksand;
+  font-size: 13px;
 `
 
 

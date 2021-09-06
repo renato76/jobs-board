@@ -15,4 +15,8 @@ export default JobNumbers
 const JobNumbersStyles = styled.div`
   display: flex;
   justify-content: center;
+  p {
+    font-family: Quicksand;
+    font-size: 15px;
+  }
 `
