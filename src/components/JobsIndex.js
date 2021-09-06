@@ -10,11 +10,11 @@ const JobsIndex = ({ data }) => {
   const indexOfLastJob = currentPage * jobsPerPage
   const indexOfFirstJob = indexOfLastJob - jobsPerPage
   const currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob)
-  console.log(jobs)
 
   return (
     <>
       <ListJobs jobs={currentJobs} />
+      <p>Displaying results {indexOfFirstJob +1} to {indexOfLastJob}</p>
       <Pagination 
         jobsPerPage={jobsPerPage}
         totalJobs={jobs.length}

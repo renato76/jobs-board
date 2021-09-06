@@ -11,17 +11,25 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
     pageNumbers.push(i)
   }
   console.log(totalJobs)
-  // const previous = () => setCurrentPage(currentPage - 1)
-  // const next = () => setCurrentPage(currentPage + 1)
 
   // only create the Pagination once we have data
   if (pageNumbers.length === 0) {
     return <></>
   }
 
+  const previous = () => setCurrentPage(currentPage - 1)
+  const next = () => setCurrentPage(currentPage + 1)
+
+
   return (
     <PaginationStyles>
       <UnorderedList>
+        <Listitem>
+          <PageLinks
+            onClick={previous}
+          >Prev
+          </PageLinks>
+        </Listitem>
         {pageNumbers.map(number => (
           <Listitem key={number}>
             <PageLinks 
@@ -32,6 +40,12 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
             </PageLinks>
           </Listitem>
         ))}
+        <Listitem>
+          <PageLinks
+            onClick={next}
+          >Next
+          </PageLinks>
+        </Listitem>
       </UnorderedList>
     </PaginationStyles>
   )
@@ -50,7 +64,8 @@ const UnorderedList = styled.ul`
   list-style: none;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  padding: 0;
+  margin: 30px 0 0 0;
 `
 
 const Listitem = styled.div`

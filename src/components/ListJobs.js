@@ -25,7 +25,6 @@ export const JobsCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 94%;
   flex-wrap: wrap;
   height: 40px;
   margin: 8px 10px;
