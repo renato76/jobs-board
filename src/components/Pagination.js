@@ -3,12 +3,11 @@ import React from 'react'
 import styled from 'styled-components'
 import PageNumbers from './PageNumbers'
 
-const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => {
+const Pagination = React.memo(({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => {
   const pageNumbers = []
   for (let i  = 1; i <= Math.ceil(totalJobs / jobsPerPage); i++) {
     pageNumbers.push(i)
   }
-  console.log(totalJobs)
 
   if (pageNumbers.length === 0) {
     return <></>
@@ -58,7 +57,7 @@ const Pagination = ({ jobsPerPage, totalJobs, currentPage, setCurrentPage }) => 
       </UnorderedList>
     </PaginationStyles>
   )
-}
+})
 
 export default Pagination
 
@@ -74,7 +73,7 @@ const UnorderedList = styled.ul`
   display: flex;
   justify-content: center;
   padding: 0;
-  margin: 30px 0 0 0;
+  margin: 5px 0 0 0;
 `
 
 export const Listitem = styled.div`

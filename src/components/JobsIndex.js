@@ -3,7 +3,7 @@ import ListJobs from './ListJobs'
 import Pagination from './Pagination'
 import JobNumbers from './JobNumbers'
 
-const JobsIndex = ({ data }) => {
+const JobsIndex = React.memo(({ data }) => {
   const jobs = data.jobs
   const [currentPage, setCurrentPage] = useState(1)
   const [jobsPerPage] = useState(10)
@@ -29,7 +29,7 @@ const JobsIndex = ({ data }) => {
       />
     </>
   )
-}
+})
 
 export default JobsIndex;
 
