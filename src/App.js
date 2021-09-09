@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import { ALL_JOBS_QUERY } from './graphql/queries'
 import JobsIndex from './components/JobsIndex'
 
-const App = () => {
+export const App = () => {
   const { loading, error, data } = useQuery(ALL_JOBS_QUERY);
 
   if (loading) return <p>Loading...</p>

@@ -1,22 +1,19 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const ListJobs = React.memo(({ jobs }) => {
-  useEffect(() => {
-    console.log('Jobs Rendered >>>', jobs)
-  })
   const renderJobsData = () => {
     return jobs.map(job => {
       return (
-        <JobsCard key={job.id}>
-          <Content>{job.title} at {job.company.name} </Content>
-        </JobsCard>
+        <JobsCardStyles key={job.id}>
+          <ContentStyles data-testid="job-title">{job.title} at {job.company.name}</ContentStyles>
+        </JobsCardStyles>
       )
     })
   }
   return (
     <>
-      <Title>Jobs</Title>
+      <TitleStyles>Jobs</TitleStyles>
       {renderJobsData()}
     </>
   )
@@ -24,7 +21,7 @@ const ListJobs = React.memo(({ jobs }) => {
 
 export default ListJobs
 
-export const JobsCard = styled.div`
+export const JobsCardStyles = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,7 +39,7 @@ export const JobsCard = styled.div`
   }  
 `
 
-export const Content = styled.p`
+export const ContentStyles = styled.p`
   margin: 0 0 0 20px;
   font-family: Quicksand;
   font-size: 13px;
@@ -51,7 +48,7 @@ export const Content = styled.p`
   }
 `
 
-export const Title = styled.h1`
+export const TitleStyles = styled.h1`
   text-align: center;
   font-family: Quicksand;
   font-size: 27px;
